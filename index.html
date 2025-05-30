@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Watch Video</title>
+  <meta charset="UTF-8">
+  <title>Adstera Click Button</title>
   <style>
-    .video-button {
-      background: url('https://via.placeholder.com/640x360?text=Click+to+Watch+Video') no-repeat center center;
-      background-size: cover;
-      width: 640px;
-      height: 360px;
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      text-align: center;
+      padding: 100px;
+    }
+
+    .twitter-button {
+      background-color: #1DA1F2;
+      color: white;
+      padding: 15px 25px;
+      font-size: 20px;
       border: none;
+      border-radius: 30px;
       cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .twitter-button:hover {
+      background-color: #0d8ddb;
     }
   </style>
 </head>
 <body>
 
-  <button class="video-button" id="watchBtn"></button>
+  <h1>Watch Now</h1>
+  <a class="twitter-button" href="https://www.profitableratecpm.com/kf3qprjcu?key=f4646d0b196b3e6ba057b2f620d35491" target="_blank" onclick="setBackRedirect()">🎥 Watch Video</a>
 
   <script>
-    document.getElementById("watchBtn").addEventListener("click", () => {
-      // Try opening the ad in a new tab
-      const adWindow = window.open("https://www.profitableratecpm.com/kf3qprjcu?key=f4646d0b196b3e6ba057b2f620d35491", "_blank");
+    function setBackRedirect() {
+      // Store redirect flag in sessionStorage
+      sessionStorage.setItem("redirectBack", "yes");
+    }
 
-      // If the browser blocked the popup, inform user
-      if (!adWindow) {
-        alert("Please allow pop-ups or click the link manually.");
-      }
-
-      // Redirect current tab after 5 seconds
-      setTimeout(() => {
+    window.addEventListener("pageshow", function(event) {
+      if (sessionStorage.getItem("redirectBack") === "yes") {
+        sessionStorage.removeItem("redirectBack");
         window.location.href = "https://adstera-7v8.pages.dev/";
-      }, 5000);
+      }
     });
   </script>
-
 </body>
 </html>
-
